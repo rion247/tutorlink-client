@@ -1,10 +1,9 @@
-import LogInForm from "@/components/modules/auth/login/logIn";
-import React from "react";
+import LoginComponents from "@/components/modules/auth/login/loginComponents";
 
 const LogInPage = () => {
   return (
     <div>
-      <LogInForm />
+      <LoginComponents />
     </div>
   );
 };
