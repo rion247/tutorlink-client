@@ -1,7 +1,9 @@
+import RegisterTabs from "@/components/modules/auth/register/registerTabs";
+
 const RegisterPage = () => {
   return (
     <div>
-      <h1>This is Register Page</h1>
+      <RegisterTabs />
     </div>
   );
 };
