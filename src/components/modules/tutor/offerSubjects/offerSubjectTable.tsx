@@ -1,17 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import TLTable from "@/components/ui/core/TLTable";
 import TablePagination from "@/components/ui/core/TLTable/TablePagination";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { IOfferSubject, TMeta } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
 import EditOfferSubjectModal from "./editOfferSubjectModal";
 
 export type TOfferSubjectTable = Pick<
@@ -113,22 +105,12 @@ export const columns: ColumnDef<TOfferSubjectTable>[] = [
     header: () => <div>Action</div>,
     cell: ({ row }) => {
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0 cursor-pointer">
-              <span className="sr-only ">Open menu</span>
-              <MoreHorizontal className="h-4 w-4 " />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuSeparator />
-
-            <EditOfferSubjectModal
-              id={row.original._id}
-              offerSubjectData={row.original as IOfferSubject}
-            />
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div>
+          <EditOfferSubjectModal
+            id={row.original._id}
+            offerSubjectData={row.original as IOfferSubject}
+          />
+        </div>
       );
     },
   },

@@ -39,6 +39,7 @@ import {
 import { dayArray } from "./offerSubjectConstant";
 import { Input } from "@/components/ui/input";
 import { updateOfferSubject } from "@/services/OfferSubject";
+import { PenLine } from "lucide-react";
 
 const EditOfferSubjectModal = ({
   id,
@@ -97,8 +98,8 @@ const EditOfferSubjectModal = ({
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button className="block w-full text-start font-medium bg-transparent text-neutral-700 cursor-pointer hover:bg-blue-700 hover:text-white">
-            Edit
+          <Button className="cursor-pointer">
+            <PenLine />
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">

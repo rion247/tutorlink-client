@@ -4,6 +4,7 @@ import * as React from "react";
 import {
   BookOpen,
   BookOpenText,
+  FileChartPie,
   LayoutDashboard,
   LogOut,
   LucideIcon,
@@ -89,7 +90,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         icon: LayoutDashboard,
         isActive: true,
       },
-
       {
         title: "Offered Subject",
         url: "#",
@@ -99,6 +99,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           {
             title: "All Offered Subject",
             url: "/tutor/offer-subjects",
+          },
+        ],
+      },
+      {
+        title: "Bookings",
+        url: "#",
+        icon: FileChartPie,
+        isActive: true,
+        items: [
+          {
+            title: "My Bookings",
+            url: "/tutor/my-bookings",
           },
         ],
       },
