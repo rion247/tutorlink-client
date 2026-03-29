@@ -2,9 +2,9 @@
 
 import getValidToken from "@/lib/verifyToken";
 import { revalidateTag } from "next/cache";
-import { FieldValues } from "react-hook-form";
 
-export const createOfferSubject = async (data: FieldValues) => {
+export const createOfferSubject = async (data: FormData) => {
+  console.log(data);
   const token = await getValidToken();
 
   try {
@@ -12,8 +12,8 @@ export const createOfferSubject = async (data: FieldValues) => {
       `${process.env.NEXT_PUBLIC_BASE_API}/offered-subjects/create-offered-subject`,
       {
         method: "POST",
-        headers: { Authorization: token, "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { Authorization: token },
+        body: data,
       },
     );
 
@@ -25,7 +25,7 @@ export const createOfferSubject = async (data: FieldValues) => {
   }
 };
 
-export const updateOfferSubject = async (id: string, data: FieldValues) => {
+export const updateOfferSubject = async (id: string, data: FormData) => {
   const token = await getValidToken();
 
   try {
@@ -33,8 +33,8 @@ export const updateOfferSubject = async (id: string, data: FieldValues) => {
       `${process.env.NEXT_PUBLIC_BASE_API}/offered-subjects/${id}`,
       {
         method: "PATCH",
-        headers: { Authorization: token, "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { Authorization: token },
+        body: data,
       },
     );
     revalidateTag("OfferSubjects", "");

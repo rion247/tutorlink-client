@@ -40,9 +40,13 @@ import { ISubject } from "@/types";
 import { getAllSubject } from "@/services/Subject";
 import { dayArray } from "./offerSubjectConstant";
 import { createOfferSubject } from "@/services/OfferSubject";
+import ImagePreviewer from "@/components/ui/core/TLImage/ImagePreviewer";
+import TLImageUploader from "@/components/ui/core/TLImage";
 
 const CreateOfferSubjectModal = () => {
   const [subjectData, setSubjectData] = useState<ISubject[] | []>([]);
+  const [imageFiles, setImageFiles] = useState<File[] | []>([]);
+  const [imagePreview, setImagePreview] = useState<string[] | []>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,10 +82,12 @@ const CreateOfferSubjectModal = () => {
       maxCapacity: Number(data?.maxCapacity),
     };
 
-    console.log(modifiedDataForBackEnd);
-
     try {
-      const res = await createOfferSubject(modifiedDataForBackEnd);
+      const formData = new FormData();
+      formData.append("file", imageFiles[0] as File);
+      formData.append("data", JSON.stringify(modifiedDataForBackEnd));
+
+      const res = await createOfferSubject(formData);
 
       if (res.success) {
         toast.success(res?.message || "Offer Subject is created successfully", {
@@ -287,6 +293,24 @@ const CreateOfferSubjectModal = () => {
                     </Field>
                   )}
                 />
+              </div>
+
+              <div className="mt-8">
+                {imagePreview.length > 0 ? (
+                  <ImagePreviewer
+                    setImageFiles={setImageFiles}
+                    imagePreview={imagePreview}
+                    setImagePreview={setImagePreview}
+                  />
+                ) : (
+                  <div className="">
+                    <TLImageUploader
+                      setImageFiles={setImageFiles}
+                      setImagePreview={setImagePreview}
+                      label="Uploaded Image"
+                    />
+                  </div>
+                )}
               </div>
 
               <DialogFooter>

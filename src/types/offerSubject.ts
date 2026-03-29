@@ -48,4 +48,5 @@ export interface IOfferSubject {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  offeredSubjectImage: string;
 }

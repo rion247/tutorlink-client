@@ -40,6 +40,9 @@ import { dayArray } from "./offerSubjectConstant";
 import { Input } from "@/components/ui/input";
 import { updateOfferSubject } from "@/services/OfferSubject";
 import { PenLine } from "lucide-react";
+import { useState } from "react";
+import ImagePreviewer from "./../../../ui/core/TLImage/ImagePreviewer";
+import TLImageUploader from "@/components/ui/core/TLImage";
 
 const EditOfferSubjectModal = ({
   id,
@@ -48,6 +51,9 @@ const EditOfferSubjectModal = ({
   id: string;
   offerSubjectData: IOfferSubject;
 }) => {
+  const [imageFiles, setImageFiles] = useState<File[] | []>([]);
+  const [imagePreview, setImagePreview] = useState<string[] | []>([]);
+
   const form = useForm<z.infer<typeof offerSubjectValidationSchemaforEdit>>({
     resolver: zodResolver(offerSubjectValidationSchemaforEdit),
     defaultValues: {
@@ -77,7 +83,13 @@ const EditOfferSubjectModal = ({
     };
 
     try {
-      const res = await updateOfferSubject(id, modifiedDataForBackEnd);
+      const formData = new FormData();
+
+      formData.append("data", JSON.stringify(modifiedDataForBackEnd));
+
+      formData.append("file", imageFiles[0] as File);
+
+      const res = await updateOfferSubject(id, formData);
 
       if (res.success) {
         toast.success(res?.message || "Offered Subject updated successfully", {
@@ -247,6 +259,23 @@ const EditOfferSubjectModal = ({
                     </Field>
                   )}
                 />
+              </div>
+              <div className="mt-8">
+                {imagePreview.length > 0 ? (
+                  <ImagePreviewer
+                    setImageFiles={setImageFiles}
+                    imagePreview={imagePreview}
+                    setImagePreview={setImagePreview}
+                  />
+                ) : (
+                  <div className="">
+                    <TLImageUploader
+                      setImageFiles={setImageFiles}
+                      setImagePreview={setImagePreview}
+                      label="Uploaded Profile Image"
+                    />
+                  </div>
+                )}
               </div>
 
               <DialogFooter>
