@@ -1,5 +1,5 @@
 "use client";
-import silderImage01 from "../../../../app/assets/svgs/sliderImage01.png";
+import silderImage01 from "../../../../app/assets/svgs/sliderImage01.jpg";
 import silderImage02 from "../../../../app/assets/svgs/tutorBanner.png";
 import silderImage03 from "../../../../app/assets/svgs/heroImage.jpg";
 import Slider from "react-slick";
@@ -16,7 +16,7 @@ const HeroBanner = () => {
     autoplaySpeed: 3000,
   };
   return (
-    <div className=" text-neutral-700 my-4">
+    <div className=" text-neutral-700 my-4 overflow-hidden">
       <Slider {...settings}>
         <HeroSlide
           title="Your Learning Journey Starts Here"

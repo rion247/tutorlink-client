@@ -19,8 +19,8 @@ const HeroSlide = ({
   ctaButtonLink02: string;
 }) => {
   return (
-    <section className="  ">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-center xl:items-center  lg:gap-6">
+    <section className=" w-full overflow-hidden">
+      <div className=" flex flex-col justify-center mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-center xl:items-center md:gap-6 ">
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-2xl lg:text-left ">
           <h1 className=" text-2xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold leading-9 md:leading-10 lg:leading-13 xl:leading-19 sm:text-6xl">
             {title}
@@ -46,12 +46,17 @@ const HeroSlide = ({
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 ">
-          <Image
+          {/* <Image
             src={imgLink}
             alt="...Loading"
             width={700}
             height={700}
             className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
+          /> */}
+          <Image
+            src={imgLink}
+            alt="...Loading"
+            className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain"
           />
         </div>
       </div>

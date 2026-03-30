@@ -46,14 +46,11 @@ export const updateOfferSubject = async (id: string, data: FormData) => {
 };
 
 export const getAllOfferSubject = async (page?: string, limit?: string) => {
-  const token = await getValidToken();
-
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/offered-subjects?limit=${limit}&page=${page}`,
       {
         method: "GET",
-        headers: { Authorization: token },
         next: { tags: ["OfferSubjects"] },
       },
     );
