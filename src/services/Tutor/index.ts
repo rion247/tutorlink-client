@@ -22,6 +22,19 @@ export const getAllTutorForAdmin = async () => {
   }
 };
 
+export const getAllTutor = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/tutors`, {
+      method: "GET",
+      next: { tags: ["Tutors"] },
+    });
+
+    return await res.json();
+  } catch (error: any) {
+    return Error(error);
+  }
+};
+
 export const tutorApproval = async (id: string) => {
   const token = await getValidToken();
 

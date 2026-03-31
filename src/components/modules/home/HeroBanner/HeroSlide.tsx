@@ -46,13 +46,6 @@ const HeroSlide = ({
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 ">
-          {/* <Image
-            src={imgLink}
-            alt="...Loading"
-            width={700}
-            height={700}
-            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
-          /> */}
           <Image
             src={imgLink}
             alt="...Loading"

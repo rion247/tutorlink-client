@@ -6,10 +6,8 @@ import OfferedSubjectCard from "./OfferedSubjectCard";
 const OfferedSubject = async () => {
   const { data } = await getAllOfferSubject();
 
-  console.log(data);
-
   return (
-    <TLContainer className="my-15 md:my-20">
+    <TLContainer className="my-15 md:my-20 lg:my-24 xl:my-28">
       <div className="text-center mb-14 lg:mb-20">
         <h4 className=" text-2xl md:text-4xl font-extrabold text-neutral-600">
           Offered Subjects
