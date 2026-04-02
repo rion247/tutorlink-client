@@ -67,14 +67,11 @@ export const updateSubjectStatus = async (id: string, data: FieldValues) => {
 };
 
 export const getAllSubject = async (page?: string, limit?: string) => {
-  const token = await getValidToken();
-
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_API}/subjects?limit=${limit}&page=${page}`,
       {
         method: "GET",
-        headers: { Authorization: token },
         next: { tags: ["Subjects"] },
       },
     );

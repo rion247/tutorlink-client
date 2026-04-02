@@ -45,10 +45,20 @@ export const updateOfferSubject = async (id: string, data: FormData) => {
   }
 };
 
-export const getAllOfferSubject = async (page?: string, limit?: string) => {
+export const getAllOfferSubject = async (
+  page?: string,
+  limit?: string,
+  query?: { [key: string]: string | string[] | undefined },
+) => {
+  const params = new URLSearchParams();
+
+  if (query?.subject) {
+    params.append("subject", query?.subject.toString());
+  }
+
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_API}/offered-subjects?limit=${limit}&page=${page}`,
+      `${process.env.NEXT_PUBLIC_BASE_API}/offered-subjects?limit=${limit}&page=${page}&${params}`,
       {
         method: "GET",
         next: { tags: ["OfferSubjects"] },

@@ -3,7 +3,6 @@ import HeroBanner from "@/components/modules/home/HeroBanner/HeroBanner";
 import OfferedSubject from "@/components/modules/home/OfferedSubject/OfferedSubject";
 import Testimonials from "@/components/modules/home/Testimonials/Testimonials";
 import TutorSection from "@/components/modules/home/TutorSection/TutorSection";
-import Footer from "@/components/shared/Footer/Footer";
 import { getAllTestimonials } from "@/services/Testimonials";
 
 const HomePage = async () => {
@@ -16,7 +15,6 @@ const HomePage = async () => {
       <TutorSection />
       <Advertisement />
       <Testimonials testimonials={testimonialsdata} />
-      <Footer />
     </div>
   );
 };

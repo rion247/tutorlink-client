@@ -2,12 +2,13 @@ import TLContainer from "@/components/ui/core/TLContainer";
 import { getAllTutor } from "@/services/Tutor";
 import TutorSectionCard from "./TutorSectionCard";
 import { ITutor } from "@/types";
+import Link from "next/link";
 
 const TutorSection = async () => {
   const { data } = await getAllTutor();
 
   return (
-    <TLContainer className="my-15 md:my-20 lg:my-32 xl:my-38">
+    <TLContainer className="my-15 md:my-20 lg:my-32 xl:mt-28 xl:mb-32">
       <div className="text-center mb-14 lg:mb-20">
         <h4 className=" text-2xl md:text-4xl font-extrabold text-neutral-600">
           Meet Our Expert Tutors
@@ -24,6 +25,15 @@ const TutorSection = async () => {
             .map((tutorData: ITutor) => (
               <TutorSectionCard key={tutorData?._id} tutorData={tutorData} />
             ))}
+      </div>
+      <div className="flex space-y-4 justify-center sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center w-full mt-10 md:mt-13 lg:mt-16 xl:mt-18 ">
+        <Link
+          rel="noopener noreferrer"
+          href={"/offered-subject"}
+          className="px-4 md:px-6 lg:px-8 py-3 text-sm md:text-base lg:text-lg font-semibold border rounded border-gray-300 hover:bg-blue-700 hover:text-white hover:border-transparent"
+        >
+          {"Load More"}
+        </Link>
       </div>
     </TLContainer>
   );

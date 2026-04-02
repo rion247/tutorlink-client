@@ -2,6 +2,7 @@ import TLContainer from "@/components/ui/core/TLContainer";
 import { getAllOfferSubject } from "@/services/OfferSubject";
 import { IOfferSubject } from "@/types";
 import OfferedSubjectCard from "./OfferedSubjectCard";
+import Link from "next/link";
 
 const OfferedSubject = async () => {
   const { data } = await getAllOfferSubject();
@@ -27,6 +28,15 @@ const OfferedSubject = async () => {
                 offerSubject={offerSubject}
               />
             ))}
+      </div>
+      <div className="flex space-y-4 justify-center sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center w-full mt-10 md:mt-13 lg:mt-16 xl:mt-18 ">
+        <Link
+          rel="noopener noreferrer"
+          href={"/offered-subject"}
+          className="px-4 md:px-6 lg:px-8 py-3 text-sm md:text-base lg:text-lg font-semibold border rounded border-gray-300 hover:bg-blue-700 hover:text-white hover:border-transparent"
+        >
+          {"Load More"}
+        </Link>
       </div>
     </TLContainer>
   );

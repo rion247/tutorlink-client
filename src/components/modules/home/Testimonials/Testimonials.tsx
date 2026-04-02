@@ -5,8 +5,6 @@ import { TTestimonial } from "@/types";
 import Slider from "react-slick";
 
 const Testimonials = ({ testimonials }: { testimonials: TTestimonial[] }) => {
-  console.log(testimonials);
-
   const settings = {
     dots: false,
     infinite: true,
